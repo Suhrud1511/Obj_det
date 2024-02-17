@@ -4,11 +4,12 @@ import torch
 import torch.nn as nn
 
 """ 
-Tuple is structured by (filters, kernel_size, stride) 
+Config tuple is structured as follows: (filters, kernel_size, stride) 
 Every conv is a same convolution. 
-List is structured by "B" indicating a residual block followed by the number of repeats
-"S" is for scale prediction block and computing the yolo loss
-"U" is for upsampling the feature map and concatenating with a previous layer
+List is structured as: 
+"B"-> residual block followed by the number of repeats
+"S"-> scale prediction block and computing the yolo loss
+"U"-> upsampling the feature map and concatenating with a previous layer
 """
 config = [
     (32, 3, 1),
@@ -21,7 +22,7 @@ config = [
     (512, 3, 2),
     ["B", 8],
     (1024, 3, 2),
-    ["B", 4],  # To this point is Darknet-53
+    ["B", 4],  # To this point is Darknet-53 backbone architecture
     (512, 1, 1),
     (1024, 3, 1),
     "S",
